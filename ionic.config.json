@@ -1,0 +1,8 @@
+{
+  "name": "Ma crypto",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite",
+  "id": "1d6fb16c"
+}
