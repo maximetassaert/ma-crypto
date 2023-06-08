@@ -2,16 +2,36 @@
 
 <template>
   <ion-header>
-    <ion-label>
-        {{ $route.params.id}}
-    </ion-label>
+
   </ion-header>
 
   <div id="container">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <ion-item>
-        <ion-label>
-            {{ coin.name}}
-        </ion-label>
+       
+        <IonContent>
+            <br>
+            <IonLabel>
+                <img :src="`${ coin.image?.small}`"/>
+
+                {{ coin.name}}
+                
+            </IonLabel>
+            <br>
+            {{ coin.description?.en}}<br><br>
+            <a :href="`${ websiteLink}`">WebSite</a><br><br>
+            <IonLabel>
+               Market price : {{ coin.market_data?.current_price?.eur?? 0 }} € ( {{ coin.market_data?.current_price?.usd ?? 0 }} $ )
+            </IonLabel>
+            History prices : (for last 7 days)
+            <ion-item v-for="(value) in histo" :insert="true">
+                <ion-label>
+                    {{ value }}
+                </ion-label>
+            </ion-item>
+            <br><br><br><br>
+        </IonContent>
       </ion-item>
   </div>
 </template>
@@ -22,15 +42,18 @@ import coinService from "@/services/coinService";
 import { defineProps, onMounted, ref } from "vue";
 import { useRoute } from 'vue-router';
 const route = useRoute();
-const cryptoId = route.params.id
+const cryptoId = route.params.id.toString()
 
-defineProps({
-  name: String,
-});
-
+const websiteLink =  ref("") 
 const coin: any = ref({});
+const histo: any = ref([]);
+
 onMounted(async () => {
-  const coin = await coinService.getCoinDetail(cryptoId);
+    const coinValue = coinService.getCoinDetail(cryptoId);
+    const coinHisto = coinService.getCoinHisto(cryptoId);
+    coin.value = await coinValue;
+    histo.value = await coinHisto;
+    websiteLink.value = coin.value.links?.homepage[0]?? '#'
 });
 
 </script>
