@@ -8,19 +8,21 @@
        
         <IonContent>
             <br>
-            <IonLabel>
-                <img :src="`${ coin.image?.small}`"/>
-                {{ coin.name}}
-                
-            </IonLabel>
+            <div class="image-crypto">
+              <IonLabel>
+                  <img :src="`${ coin.image?.small}`"/>
+                  {{ coin.name}}
+                  
+              </IonLabel>
+            </div>
             <br>
-            <p :innerHTML="`${ coin.description?.en }`"></p><br><br>
-            <a :href="`${ websiteLink}`">WebSite</a><br><br>
+            <p class="description" :innerHTML="`${ coin.description?.en }`"></p><br><br>
+            <p>Lien vers le site : <a :href="`${ websiteLink}`">Clique ici</a><br><br></p>
             <IonLabel>
-               Market price : {{ coin.market_data?.current_price?.eur?? 0 }} € ( {{ coin.market_data?.current_price?.usd ?? 0 }} $ )
+               <p class="price">Market price : {{ coin.market_data?.current_price?.eur?? 0 }} € ( {{ coin.market_data?.current_price?.usd ?? 0 }} $ )</p>
             </IonLabel>
-            History prices : (for last 7 days)
-            <ion-item v-for="(value) in histo" :insert="true">
+            <p class="history">History prices : (for last 7 days)</p>
+            <ion-item class="ancien-price" v-for="(value) in histo" :insert="true">
                 <ion-label>
                     {{ value }}
                 </ion-label>
@@ -54,15 +56,6 @@ onMounted(async () => {
 
 <style scoped>
 
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -91,8 +84,36 @@ ion-item {
   border-radius: 10px;
 }
 
+ion-item .price {
+  text-align: center;
+  font-size: 28px;
+}
+
+ion-item .ancien-price {
+  text-align: center;
+}
+
 .lien {
   text-decoration: none;
 }
+
+.image-crypto {
+  max-width: 100px;
+  background-color: black;
+  padding: 20px;
+  margin: auto;
+}
+
+.description {
+  width: 75%;
+  margin: auto;
+  line-height: 20px;
+}
+
+.history {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 24px;
+}
+
 </style>
-```
