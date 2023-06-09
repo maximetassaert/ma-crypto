@@ -104,7 +104,6 @@ function handleInput(event: any) {
 ion-item {
   border-radius: 10px;
   background-color: gainsboro;
-  border: solid 1px black;
   margin: 5px 20px;
 }
 

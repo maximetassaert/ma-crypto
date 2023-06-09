@@ -86,7 +86,7 @@ ion-item {
 
 ion-item .price {
   text-align: center;
-  font-size: 28px;
+  font-size: 18px;
 }
 
 ion-item .ancien-price {
@@ -98,14 +98,13 @@ ion-item .ancien-price {
 }
 
 .image-crypto {
-  max-width: 100px;
-  background-color: black;
   padding: 20px;
   margin: auto;
+  text-align: center;
 }
 
 .description {
-  width: 75%;
+  width: 90%;
   margin: auto;
   line-height: 20px;
 }
@@ -113,7 +112,7 @@ ion-item .ancien-price {
 .history {
   text-align: center;
   margin: 15px 0;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 </style>
