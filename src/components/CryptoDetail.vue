@@ -4,22 +4,17 @@
   <ion-header>
 
   </ion-header>
-
-  <div id="container">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <ion-item>
        
         <IonContent>
             <br>
             <IonLabel>
                 <img :src="`${ coin.image?.small}`"/>
-
                 {{ coin.name}}
                 
             </IonLabel>
             <br>
-            {{ coin.description?.en}}<br><br>
+            <p :innerHTML="`${ coin.description?.en }`"></p><br><br>
             <a :href="`${ websiteLink}`">WebSite</a><br><br>
             <IonLabel>
                Market price : {{ coin.market_data?.current_price?.eur?? 0 }} € ( {{ coin.market_data?.current_price?.usd ?? 0 }} $ )
@@ -33,7 +28,6 @@
             <br><br><br><br>
         </IonContent>
       </ion-item>
-  </div>
 </template>
 
 <script setup lang="ts">
