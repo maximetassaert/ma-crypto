@@ -9,9 +9,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
+  <div>
     <ion-list>
-      <ion-item v-for="(coin, index) in coinsList[paginate]" :key="index" :insert="true">
+      <ion-item v-for="(coin, index) in coinsList[paginate]" :key="index" :insert="true" class="item">
         <ion-label>
           <a class="lien" :href="`./crypto/${coin.id}`">{{ coin.name}}</a>
         </ion-label>
@@ -77,15 +77,6 @@ function handleInput(event: any) {
 
 <style scoped>
 
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -112,10 +103,16 @@ function handleInput(event: any) {
 
 ion-item {
   border-radius: 10px;
+  background-color: gainsboro;
+  border: solid 1px black;
+  margin: 5px 20px;
 }
 
 .lien {
   text-decoration: none;
+}
+.item-native {
+    background-color: gainsboro;
 }
 </style>
 ```
