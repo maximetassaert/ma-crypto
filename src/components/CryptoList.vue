@@ -27,11 +27,8 @@
 <script setup lang="ts">
 import { IonItem, IonLabel, IonList, IonSearchbar, IonButton } from "@ionic/vue";
 import coinService from "@/services/coinService";
-import { defineProps, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 
-defineProps({
-  name: String,
-});
 
 const coinsList: any = ref([]);
 const paginate: any = ref(0);

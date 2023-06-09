@@ -23,10 +23,6 @@ const routes: Array<RouteRecordRaw> = [
         path: 'crypto/:id',
         component: () => import('@/views/TabCrypto.vue')
       },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3Page.vue')
-      }
     ]
   }
 ]
